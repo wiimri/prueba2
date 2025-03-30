@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crunchy Anime</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <header>
+    <img src="assets/img/images-removebg-preview.png" alt="Logo Anime">
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#noticias">Noticias</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>¡Buenas noticias!<br>Ya eres Premium</h1>
+      <p>Ya lo tienes todo listo. Disfruta de tus beneficios Premium de " Sal de la cueva ".</p>
+      <button>Llévame al inicio</button>
+    </div>
+    <img src="assets/img/mascot.png" class="mascot" alt="Mascota Anime">
+  </section>
+
+  <section id="catalogo" class="section">
+    <div class="carousel">
+      <button class="carousel-button prev" id="prevBtn" onclick="moveSlide(-1)">&#10094;</button>
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-card">
+          <img src="assets/img/img1.jpg" alt="Anime 1">
+          <p>Solo Leveling</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img2.jpg" alt="Anime 2">
+          <p>Dr. Stone</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img3.jpg" alt="Anime 3">
+          <p>Shingeki no Kyojin</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img4.jpg" alt="Anime 4">
+          <p>Kimetsu no Yaiba</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img5.jpg" alt="Anime 5">
+          <p>Bleach: TYBW</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img6.jpg" alt="Anime 6">
+          <p>One Piece</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img7.jpg" alt="Anime 7">
+          <p>Jujutsu Kaisen</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img8.jpg" alt="Anime 8">
+          <p>Tokyo Revengers</p>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/img9.jpg" alt="Anime 9">
+          <p>Black Clover</p>
+        </div>
+      </div>
+      <button class="carousel-button next" id="nextBtn" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <section id="noticias" class="hero">
+    <h2>¡No te pierdas las últimas noticias!</h2>
+    <p>Mantente al día sobre anime, videojuegos, J-Pop y cultura japonesa.</p>
+  </section>
+
+  <footer>
+    ¿Preguntas? Visita nuestro <a style="color: orange; text-decoration: underline;">centro de ayuda</a>.<br><br>
+    &copy; 2025 Sal de la cueva | Todos los derechos reservados
+  </footer>
+
+  <script>
+    let currentIndex = 0;
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const visibleItems = 3;
+
+    function updateButtons() {
+      const totalItems = track.children.length;
+      const maxIndex = totalItems - visibleItems;
+      prevBtn.disabled = currentIndex <= 0;
+      nextBtn.disabled = currentIndex >= maxIndex;
+    }
+
+    function moveSlide(direction) {
+      const totalItems = track.children.length;
+      const maxIndex = totalItems - visibleItems;
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = 0;
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      const slideWidth = track.children[0].offsetWidth;
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      updateButtons();
+    }
+
+    window.addEventListener('load', updateButtons);
+    window.addEventListener('resize', () => {
+      const slideWidth = track.children[0].offsetWidth;
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    });
+  </script>
+
+</body>
+</html>
