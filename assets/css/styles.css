@@ -12,6 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
   
   header img {
@@ -71,6 +72,8 @@ body {
   
   .section {
     padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .anime-gallery {
@@ -79,6 +82,7 @@ body {
     justify-content: center;
     gap: 15px;
     padding: 30px 0;
+    flex-wrap: nowrap;
   }
   
   .anime-cards {
@@ -86,7 +90,8 @@ body {
     gap: 15px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    max-width: 1000px;
+    max-width: 100%;
+    padding: 10px;
   }
   
   .anime-cards::-webkit-scrollbar {
@@ -121,3 +126,63 @@ body {
     color: rgb(200, 200, 200);
     font-size: 0.8em;
   }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    nav a {
+      margin: 10px 0;
+    }
+  
+    .hero h1 {
+      font-size: 1.5em;
+    }
+  
+    .hero p {
+      font-size: 0.9em;
+    }
+  
+    .anime-gallery {
+      flex-direction: column;
+    }
+  
+    .anime-cards {
+      max-width: 100%;
+      gap: 10px;
+      padding: 0 10px;
+    }
+  
+    .card {
+      width: 140px;
+    }
+  
+    .nav-icon {
+      font-size: 20px;
+    }
+  
+    .section {
+      padding: 20px 15px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .card {
+      width: 200px;
+    }
+  
+    .nav-icon {
+      font-size: 28px;
+    }
+  }
+  
