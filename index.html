@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crunchy Anime</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero" id="inicio">
     <div class="hero-text">
       <h1>¡Buenas noticias!<br>Ya eres Premium</h1>
       <p>Ya lo tienes todo listo. Disfruta de tus beneficios Premium de " Sal de la cueva ".</p>
@@ -27,47 +28,20 @@
   </section>
 
   <section id="catalogo" class="section">
-    <div class="carousel">
-      <button class="carousel-button prev" id="prevBtn" onclick="moveSlide(-1)">&#10094;</button>
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-card">
-          <img src="assets/img/img1.jpg" alt="Anime 1">
-          <p>Solo Leveling</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img2.jpg" alt="Anime 2">
-          <p>Dr. Stone</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img3.jpg" alt="Anime 3">
-          <p>Shingeki no Kyojin</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img4.jpg" alt="Anime 4">
-          <p>Kimetsu no Yaiba</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img5.jpg" alt="Anime 5">
-          <p>Bleach: TYBW</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img6.jpg" alt="Anime 6">
-          <p>One Piece</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img7.jpg" alt="Anime 7">
-          <p>Jujutsu Kaisen</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img8.jpg" alt="Anime 8">
-          <p>Tokyo Revengers</p>
-        </div>
-        <div class="carousel-card">
-          <img src="assets/img/img9.jpg" alt="Anime 9">
-          <p>Black Clover</p>
-        </div>
+    <div class="anime-gallery">
+      <i class="fas fa-chevron-left nav-icon" id="leftArrow"></i>
+
+      <div class="anime-cards" id="cardsContainer">
+        <div class="card"><img src="assets/img/sololeveling.jpg" alt=""><p>Solo Leveling</p></div>
+        <div class="card"><img src="assets/img/drstone.jpg" alt=""><p>Dr. Stone</p></div>
+        <div class="card"><img src="assets/img/shangrilafrontier.jpg" alt=""><p>Shangri-La</p></div>
+        <div class="card"><img src="assets/img/losdiariosdelaboticaria.jpg" alt=""><p>Los diarios de la boticaria</p></div>
+        <div class="card"><img src="assets/img/possiblythegreatest.jpg" alt=""><p>Possibly the Greatest Alchemist of All Time</p></div>
+        <div class="card"><img src="assets/img/evengiventhe.jpg" alt=""><p>Even Given the Worthless "Appraiser" Class...</p></div>
+        <div class="card"><img src="assets/img/thedailylifeofamiddle.jpg" alt=""><p>The Daily Life of a Middle-Aged Online Shopper...</p></div>
       </div>
-      <button class="carousel-button next" id="nextBtn" onclick="moveSlide(1)">&#10095;</button>
+
+      <i class="fas fa-chevron-right nav-icon" id="rightArrow"></i>
     </div>
   </section>
 
@@ -82,34 +56,16 @@
   </footer>
 
   <script>
-    let currentIndex = 0;
-    const track = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const visibleItems = 3;
+    const cardsContainer = document.getElementById('cardsContainer');
+    const leftArrow = document.getElementById('leftArrow');
+    const rightArrow = document.getElementById('rightArrow');
 
-    function updateButtons() {
-      const totalItems = track.children.length;
-      const maxIndex = totalItems - visibleItems;
-      prevBtn.disabled = currentIndex <= 0;
-      nextBtn.disabled = currentIndex >= maxIndex;
-    }
+    leftArrow.addEventListener('click', () => {
+      cardsContainer.scrollBy({ left: -200, behavior: 'smooth' });
+    });
 
-    function moveSlide(direction) {
-      const totalItems = track.children.length;
-      const maxIndex = totalItems - visibleItems;
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = 0;
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-      const slideWidth = track.children[0].offsetWidth;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-      updateButtons();
-    }
-
-    window.addEventListener('load', updateButtons);
-    window.addEventListener('resize', () => {
-      const slideWidth = track.children[0].offsetWidth;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    rightArrow.addEventListener('click', () => {
+      cardsContainer.scrollBy({ left: 200, behavior: 'smooth' });
     });
   </script>
 
